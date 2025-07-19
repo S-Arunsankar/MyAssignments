@@ -1,16 +1,24 @@
 package week2_july16;
 
+
+
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
 
 public class FacebookLogin {
 
-	public static void main(String[] args) {
+	
+	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("guest");
+		
+		
 		
 		ChromeDriver driver = new ChromeDriver(options);
 		
@@ -18,13 +26,49 @@ public class FacebookLogin {
 		
 		driver.manage().window().maximize();
 		
-//		driver.manage().deleteAllCookies();
+		Thread.sleep(5000);
+
+		
+
+		driver.findElement(By.id("email")).sendKeys("Arun");
+		
+		driver.findElement(By.xpath("//a[@class=\"_42ft _4jy0 _6lti _4jy6 _4jy2 selected _51sy\"]")).click();
+
+		
+		driver.findElement(By.name("firstname")).sendKeys("Arun");
+		
+		driver.findElement(By.name("lastname")).sendKeys("sankar");
+		
+		WebElement dob = driver.findElement(By.id("day"));
+		
+		Select selectdob = new Select(dob);
+		
+		selectdob.selectByValue("15");
+		
+		WebElement month = driver.findElement(By.id("month"));
+		
+		Select selectmonth = new Select(month);
+		
+		selectmonth.selectByValue("8");
+		
+		WebElement year = driver.findElement(By.id("year"));
+		
+		Select selectyear = new Select(year);
+		
+		selectyear.selectByValue("2020");
+		
+		WebElement button = driver.findElement(By.id("sex"));
+		
+		button.click();
+		
+		driver.findElement(By.name("reg_email__")).sendKeys("7876655453");
+		
+		driver.findElement(By.id("password_step_input")).sendKeys("qweasdzxc");
+		
+		driver.findElement(By.name("websubmit")).click();
 		
 		
-		driver.switchTo().alert();
-		
-		driver.findElement(By.className("x1i10hfl xjbqb8w x1ejq31n x18oe1m7 x1sy0etr xstzfhl x972fbf x10w94by x1qhh985 x14e42zd x1ypdohk xe8uvvx xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x16tdsg8 x1hl2dhg xggy1nq x1fmog5m xu25z0z x140muxe xo1y3bh x87ps6o x1lku1pv x1a2a7pz x9f619 x3nfvp2 xdt5ytf xl56j7k x1n2onr6 xh8yej3")).click();
 
 	}
-
 }
+
